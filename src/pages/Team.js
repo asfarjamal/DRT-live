@@ -4,13 +4,15 @@ import '../styles.css'; // Ensure you have your styles imported here
 import axios from 'axios';
 import teamImage from '../images/2nd years.jpg'; // Import your image
 
+const BASE_URL = process.env.BASE_URL
+
 const Team = () => {
   const [teamMembers, setTeamMembers] = useState([]);
 
   useEffect(() => {
     const fetchTeamMembers = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/team-members');
+        const response = await axios.get(`${BASE_URL}/api/team-members`);
         console.log(response);
         setTeamMembers(response.data);
       } catch (error) {
